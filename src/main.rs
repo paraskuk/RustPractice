@@ -39,6 +39,8 @@ fn max_array(arr: &[i32]) -> i32 {
     max
 }
 
+
+
 fn main() {
     //println!("Hello, world!");
     let arr = vec![1, 2, 3,4,5,6];
