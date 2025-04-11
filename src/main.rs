@@ -1,24 +1,69 @@
-
-
-
+/// Calculates the average of the elements in the given array slice.
+///
+/// # Arguments
+///
+/// * `arr` - A slice of 32-bit integers for which the average is to be calculated.
+///
+/// # Returns
+///
+/// A `f64` value representing the average of the elements in the array slice.
+///
+/// # Panics
+///
+/// This function will panic if the slice is empty, as dividing by zero is not handled.
+///
+/// # Example
+///
+/// ```
+/// let arr = vec![1, 2, 3, 4, 5];
+/// let avg = average(&arr);
+/// println!("The average is {}", avg);
+/// ```
 fn average(arr: &[i32]) -> f64 {
-    //let arr = vec![1, 2, 3];
-    //let sum = arr.iter().fold(0, |a, b| a + b);
-    //let count = arr.iter().fold(0, |acc, _| acc + 1);
+    // Iterate over the array and print each element with its index
     for (item, index) in arr.iter().enumerate() {
         println!("{} : {}", item, index);
     }
 
+    // Get the count of elements in the array
     let count = arr.len() as i32;
+
+    // Calculate the sum of the elements in the array
     let sum = arr.iter().sum::<i32>();
+
+    // Calculate the average as a floating-point value
     let average: f64 = sum as f64 / count as f64;
 
+    // Print the sum, count, and average
     println!("The sum is {}", sum);
     println!("The count is {}", count);
     println!("The average is {}", average);
+
+    // Return the calculated average
     average
 }
 
+/// Finds the minimum value in the given array slice.
+///
+/// # Arguments
+///
+/// * `arr` - A slice of 32-bit integers from which the minimum value is to be found.
+///
+/// # Returns
+///
+/// A `i32` value representing the minimum value in the array slice.
+///
+/// # Panics
+///
+/// This function will panic if the slice is empty.
+///
+/// # Example
+///
+/// ```
+/// let arr = vec![1, 2, 3, 4, 5];
+/// let min = min_array(&arr);
+/// println!("The minimum value is {}", min);
+/// ```
 fn min_array(arr: &[i32]) -> i32 {
     let mut min = arr[0];
     for &item in arr.iter() {
@@ -29,6 +74,27 @@ fn min_array(arr: &[i32]) -> i32 {
     min
 }
 
+/// Finds the maximum value in the given array slice.
+///
+/// # Arguments
+///
+/// * `arr` - A slice of 32-bit integers from which the maximum value is to be found.
+///
+/// # Returns
+///
+/// A `i32` value representing the maximum value in the array slice.
+///
+/// # Panics
+///
+/// This function will panic if the slice is empty.
+///
+/// # Example
+///
+/// ```
+/// let arr = vec![1, 2, 3, 4, 5];
+/// let max = max_array(&arr);
+/// println!("The maximum value is {}", max);
+/// ```
 fn max_array(arr: &[i32]) -> i32 {
     let mut max = arr[0];
     for &item in arr.iter() {
@@ -39,15 +105,15 @@ fn max_array(arr: &[i32]) -> i32 {
     max
 }
 
-
-
 fn main() {
-    //println!("Hello, world!");
-    let arr = vec![1, 2, 3,4,5,6];
+    let arr = vec![1, 2, 3, 4, 5, 6];
+
+    // Calculate and print the average of the array
     average(&arr);
-    //min_array(&arr);
+
+    // Calculate and print the minimum value in the array
     println!("The min is {}", min_array(&arr));
+
+    // Calculate and print the maximum value in the array
     println!("The max is {}", max_array(&arr));
-
-
 }
