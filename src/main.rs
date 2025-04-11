@@ -107,6 +107,7 @@ fn max_array(arr: &[i32]) -> i32 {
     max
 }
 
+
 /// Trims whitespace characters from both ends of a string.
 ///
 /// # Arguments
@@ -170,6 +171,7 @@ fn command_line() {
 
 }
 
+
 fn main() {
     let arr = vec![1, 2, 3, 4, 5, 6];
 
@@ -182,9 +184,11 @@ fn main() {
     // Calculate and print the maximum value in the array
     println!("The max is {}", max_array(&arr));
 
+
     let s = "  Hello, world!  ";
     let trimmed = custom_trim(s);
     assert_eq!(trimmed, "Hello, world!");
     println!("trimmed is : {}", trimmed);
     command_line();
+
 }
