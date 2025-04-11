@@ -105,6 +105,59 @@ fn max_array(arr: &[i32]) -> i32 {
     max
 }
 
+/// Trims whitespace characters from both ends of a string.
+///
+/// # Arguments
+///
+/// * `s` - A string slice to be trimmed.
+///
+/// # Returns
+///
+/// A string slice with leading and trailing whitespace removed.
+///
+/// # Examples
+///
+/// ```
+/// let s = "  Hello, world!  ";
+/// let trimmed = custom_trim(s);
+/// assert_eq!(trimmed, "Hello, world!");
+/// ```
+fn custom_trim(s: &str) -> &str {
+    if s.is_empty() {
+        return s;
+    }
+
+    // Find the first non-whitespace character
+    let mut start = 0;
+    for (i, c) in s.char_indices() {
+        if !c.is_whitespace() {
+            start = i;
+            break;
+        }
+
+        // If we reach the end and all characters are whitespace
+        if i == s.len() - 1 {
+            return "";
+        }
+    }
+
+    // Find the last non-whitespace character
+    let mut end = s.len();
+    for (i, c) in s.char_indices().rev() {
+        if !c.is_whitespace() {
+            end = i + c.len_utf8();
+            break;
+        }
+    }
+
+    // If end <= start, the string is all whitespace
+    if end <= start {
+        ""
+    } else {
+        &s[start..end]
+    }
+}
+
 fn main() {
     let arr = vec![1, 2, 3, 4, 5, 6];
 
@@ -116,4 +169,9 @@ fn main() {
 
     // Calculate and print the maximum value in the array
     println!("The max is {}", max_array(&arr));
+
+    let s = "  Hello, world!  ";
+    let trimmed = custom_trim(s);
+    assert_eq!(trimmed, "Hello, world!");
+    println!("trimmed is : {}", trimmed);
 }
