@@ -1,3 +1,5 @@
+use std::io;
+
 /// Calculates the average of the elements in the given array slice.
 ///
 /// # Arguments
@@ -159,6 +161,14 @@ fn custom_trim(s: &str) -> &str {
     }
 }
 
+fn command_line() {
+    let mut buffer = String::new();
+    println!("Please enter a command");
+    io::stdin().read_line(&mut buffer).unwrap();
+    println!("You entered: {}", custom_trim(buffer.as_str()));
+
+}
+
 fn main() {
     let arr = vec![1, 2, 3, 4, 5, 6];
 
@@ -175,4 +185,5 @@ fn main() {
     let trimmed = custom_trim(s);
     assert_eq!(trimmed, "Hello, world!");
     println!("trimmed is : {}", trimmed);
+    command_line();
 }
