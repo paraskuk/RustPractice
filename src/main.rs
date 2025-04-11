@@ -19,10 +19,33 @@ fn average(arr: &[i32]) -> f64 {
     average
 }
 
+fn min_array(arr: &[i32]) -> i32 {
+    let mut min = arr[0];
+    for &item in arr.iter() {
+        if item < min {
+            min = item;
+        }
+    }
+    min
+}
+
+fn max_array(arr: &[i32]) -> i32 {
+    let mut max = arr[0];
+    for &item in arr.iter() {
+        if item > max {
+            max = item;
+        }
+    }
+    max
+}
+
 fn main() {
     //println!("Hello, world!");
-    let arr = vec![1, 2, 3];
+    let arr = vec![1, 2, 3,4,5,6];
     average(&arr);
+    //min_array(&arr);
+    println!("The min is {}", min_array(&arr));
+    println!("The max is {}", max_array(&arr));
 
 
 }
