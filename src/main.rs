@@ -148,7 +148,7 @@ fn custom_trim(s: &str) -> &str {
     for (i, c) in s.char_indices().rev() {
         if !c.is_whitespace() {
             end = i + c.len_utf8();
-            println!("end is {}" ,end);
+            //println!("end is {}" ,end);
             break;
         }
     }
@@ -163,8 +163,9 @@ fn custom_trim(s: &str) -> &str {
 
 fn command_line() {
     let mut buffer = String::new();
-    println!("Please enter a command");
+    println!("Please enter a number");
     io::stdin().read_line(&mut buffer).unwrap();
+    let number = buffer.trim().parse::<i32>().unwrap();
     println!("You entered: {}", custom_trim(buffer.as_str()));
 
 }
