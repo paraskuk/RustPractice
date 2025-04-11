@@ -146,6 +146,7 @@ fn custom_trim(s: &str) -> &str {
     for (i, c) in s.char_indices().rev() {
         if !c.is_whitespace() {
             end = i + c.len_utf8();
+            println!("end is {}" ,end);
             break;
         }
     }
