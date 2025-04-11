@@ -166,7 +166,7 @@ fn command_line() {
     let mut buffer = String::new();
     println!("Please enter a number");
     io::stdin().read_line(&mut buffer).unwrap();
-    let number = buffer.trim().parse::<i32>().unwrap();
+    //let number = buffer.trim().parse::<i32>().unwrap();
     println!("You entered: {}", custom_trim(buffer.as_str()));
 
 }
