@@ -171,6 +171,30 @@ fn command_line() {
 
 }
 
+struct rectangle {
+    width: i32,
+    height: i32,
+}
+
+impl rectangle {
+    fn area(&self) -> i32 {
+        self.width * self.height
+    }
+    fn new(width: i32, height: i32) -> rectangle {
+        rectangle { width, height }
+    }
+    fn print(&self) {
+        println!("width is {} and height is {}", self.width, self.height);
+    }
+    fn get_width(&self) -> i32 {
+        self.width
+    }
+    fn get_height(&self) -> i32 {
+        self.height
+    }
+}
+
+
 
 fn main() {
     let arr = vec![1, 2, 3, 4, 5, 6];
@@ -190,5 +214,18 @@ fn main() {
     assert_eq!(trimmed, "Hello, world!");
     println!("trimmed is : {}", trimmed);
     command_line();
+    let rect = rectangle::new(10, 20);
+    rect.print();
+    //println!("The area is {}", rect.area());
+
+    let area = rect.area();
+    let width = rect.get_width();
+    let height = rect.get_height();
+    println!("The area of the rectangle is {} square pixels.", area);
+    println!("The width of the rectangle is {} pixels.", width);
+    println!("The height of the rectangle is {} pixels.", height);
+
+
+
 
 }
