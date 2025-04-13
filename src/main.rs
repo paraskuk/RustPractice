@@ -224,6 +224,10 @@ impl std::fmt::Display for Rectangle {
     }
 }
 
+enum Shape {
+    Circle(f64),
+    Rectangle(f64, f64),
+}
 
 
 
@@ -278,6 +282,15 @@ fn main() {
     //display rectangle with Display trait
     let rect = Rectangle::new(10, 20);
     println!("{}", rect);
+
+    //match expression to recognize the shape
+    let shape = Shape::Circle(5.0);
+    match shape {
+        Shape::Circle(radius) => println!("This is a circle with radius {}", radius),
+        Shape::Rectangle(width, height) => println!("This is a rectangle with width {} and height {}", width, height),
+    }
+
+
 
 
 }
