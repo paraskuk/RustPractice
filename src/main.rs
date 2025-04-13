@@ -217,6 +217,13 @@ where
     }
 }
 
+//implement the display trait for the Rectangle struct
+impl std::fmt::Display for Rectangle {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "Rectangle: {} x {}", self.width, self.height)
+    }
+}
+
 
 
 
@@ -266,6 +273,11 @@ fn main() {
     let str1 = "Hello";
     let str2 = "World";
     compare_and_print(str1, str2);
+
+    //display rectangle with fn fmt
+    //display rectangle with Display trait
+    let rect = Rectangle::new(10, 20);
+    println!("{}", rect);
 
 
 }
