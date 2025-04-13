@@ -171,10 +171,13 @@ fn command_line() {
 
 }
 
+
 struct Rectangle {
+
     width: i32,
     height: i32,
 }
+
 
 impl Rectangle {
     fn area(&self) -> i32 {
@@ -182,6 +185,7 @@ impl Rectangle {
     }
     fn new(width: i32, height: i32) -> Rectangle {
         Rectangle { width, height }
+
     }
     fn print(&self) {
         println!("width is {} and height is {}", self.width, self.height);
@@ -193,6 +197,7 @@ impl Rectangle {
         self.height
     }
 }
+
 
 // Function to add two boxes of type T that implement the Add trait
 use std::ops::Add;
@@ -231,6 +236,7 @@ enum Shape {
 
 
 
+
 fn main() {
     let arr = vec![1, 2, 3, 4, 5, 6];
 
@@ -248,8 +254,10 @@ fn main() {
     let trimmed = custom_trim(s);
     assert_eq!(trimmed, "Hello, world!");
     println!("trimmed is : {}", trimmed);
+  
     //command_line();
     let rect = Rectangle::new(10, 20);
+
     rect.print();
     //println!("The area is {}", rect.area());
 
@@ -259,6 +267,7 @@ fn main() {
     println!("The area of the rectangle is {} square pixels.", area);
     println!("The width of the rectangle is {} pixels.", width);
     println!("The height of the rectangle is {} pixels.", height);
+
 
     // Create two boxes of type i32
     let box1 = Box::new(5);
@@ -289,8 +298,6 @@ fn main() {
         Shape::Circle(radius) => println!("This is a circle with radius {}", radius),
         Shape::Rectangle(width, height) => println!("This is a rectangle with width {} and height {}", width, height),
     }
-
-
 
 
 }
