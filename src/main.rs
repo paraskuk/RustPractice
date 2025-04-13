@@ -204,7 +204,18 @@ where
     Box::new(*a + *b)
 }
 
-
+//build a function that compares and prints two types ...use traits use display and partiaEQ and Copy
+fn compare_and_print<T, U>(a: T, b: U)
+where
+    T: std::fmt::Display + std::cmp::PartialEq<U> + Copy,
+    U: std::fmt::Display + Copy,
+{
+    if a == b {
+        println!("{} is equal to {}", a, b);
+    } else {
+        println!("{} is not equal to {}", a, b);
+    }
+}
 
 
 
@@ -226,7 +237,7 @@ fn main() {
     let trimmed = custom_trim(s);
     assert_eq!(trimmed, "Hello, world!");
     println!("trimmed is : {}", trimmed);
-    command_line();
+    //command_line();
     let rect = Rectangle::new(10, 20);
     rect.print();
     //println!("The area is {}", rect.area());
@@ -246,6 +257,15 @@ fn main() {
     // Print the result
     println!("The result of adding the two boxes is: {}", *result);
 
+
+    // Compare and print two integers
+    let a = 5;
+    let b = 10;
+    compare_and_print(a, b);
+    // Compare and print two strings
+    let str1 = "Hello";
+    let str2 = "World";
+    compare_and_print(str1, str2);
 
 
 }
