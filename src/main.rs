@@ -171,17 +171,17 @@ fn command_line() {
 
 }
 
-struct rectangle {
+struct Rectangle {
     width: i32,
     height: i32,
 }
 
-impl rectangle {
+impl Rectangle {
     fn area(&self) -> i32 {
         self.width * self.height
     }
-    fn new(width: i32, height: i32) -> rectangle {
-        rectangle { width, height }
+    fn new(width: i32, height: i32) -> Rectangle {
+        Rectangle { width, height }
     }
     fn print(&self) {
         println!("width is {} and height is {}", self.width, self.height);
@@ -193,6 +193,19 @@ impl rectangle {
         self.height
     }
 }
+
+// Function to add two boxes of type T that implement the Add trait
+use std::ops::Add;
+
+fn add_boxes<T>(a: Box<T>, b: Box<T>) -> Box<T>
+where
+    T: Add<Output = T>,
+{
+    Box::new(*a + *b)
+}
+
+
+
 
 
 
@@ -214,7 +227,7 @@ fn main() {
     assert_eq!(trimmed, "Hello, world!");
     println!("trimmed is : {}", trimmed);
     command_line();
-    let rect = rectangle::new(10, 20);
+    let rect = Rectangle::new(10, 20);
     rect.print();
     //println!("The area is {}", rect.area());
 
@@ -225,6 +238,13 @@ fn main() {
     println!("The width of the rectangle is {} pixels.", width);
     println!("The height of the rectangle is {} pixels.", height);
 
+    // Create two boxes of type i32
+    let box1 = Box::new(5);
+    let box2 = Box::new(10);
+    // Add the two boxes together
+    let result = add_boxes(box1, box2);
+    // Print the result
+    println!("The result of adding the two boxes is: {}", *result);
 
 
 
