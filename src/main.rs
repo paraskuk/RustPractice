@@ -1,3 +1,4 @@
+use std::fs::File;
 use std::io;
 
 /// Calculates the average of the elements in the given array slice.
@@ -162,14 +163,14 @@ fn custom_trim(s: &str) -> &str {
     }
 }
 
-fn command_line() {
-    let mut buffer = String::new();
-    println!("Please enter a number");
-    io::stdin().read_line(&mut buffer).unwrap();
-    //let number = buffer.trim().parse::<i32>().unwrap();
-    println!("You entered: {}", custom_trim(buffer.as_str()));
-
-}
+// fn command_line() {
+//     let mut buffer = String::new();
+//     println!("Please enter a number");
+//     io::stdin().read_line(&mut buffer).unwrap();
+//     //let number = buffer.trim().parse::<i32>().unwrap();
+//     println!("You entered: {}", custom_trim(buffer.as_str()));
+//
+// }
 
 
 struct Rectangle {
@@ -234,7 +235,52 @@ enum Shape {
     Rectangle(f64, f64),
 }
 
+enum Location {
+    Unknown,
+    Anonymous,
+    Known(f64, f64) // latitude, longitude
+}
 
+impl Location {
+    fn display(&self) {
+        match *self {
+            Location::Unknown => println!("Unknown Location"),
+            Location::Anonymous => println!("Anonymous Location"),
+            Location::Known(lat, lon) => println!("{}, {}", lat, lon)
+        }
+    }
+}
+
+//write a function that ingests the file test.txt and gracefully hnadles different types of errors-exceptions with match statement
+
+use std::io::Read;
+
+
+fn ingest_file() -> io::Result<()> {
+    let file = File::open("text.txt");
+    match file {
+        Ok(mut file) => {
+            let mut contents = String::new();
+            file.read_to_string(&mut contents)?;
+            println!("File opened successfully. Contents:\n{}", contents);
+            Ok(())
+        },
+        Err(e) => match e.kind() {
+            io::ErrorKind::NotFound => {
+                println!("File not found");
+                Err(e)
+            },
+            io::ErrorKind::PermissionDenied => {
+                println!("Permission denied");
+                Err(e)
+            },
+            _ => {
+                println!("Other error: {}", e);
+                Err(e)
+            },
+        },
+    }
+}
 
 
 fn main() {
@@ -298,6 +344,15 @@ fn main() {
         Shape::Circle(radius) => println!("This is a circle with radius {}", radius),
         Shape::Rectangle(width, height) => println!("This is a rectangle with width {} and height {}", width, height),
     }
+
+
+    //match expression to recognize the location
+    let location = Location::Known(37.7749, -122.4194);
+    //print location
+    location.display();
+
+    ingest_file();
+    //println!("The file was ingested successfully");
 
 
 }
